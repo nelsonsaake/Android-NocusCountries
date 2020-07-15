@@ -1,12 +1,12 @@
 package com.example.nocuscurrencyconvertor.ui.main
 
-import android.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.nocuscurrencyconvertor.R
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : androidx.fragment.app.Fragment() {
 
@@ -26,5 +26,4 @@ class MainFragment : androidx.fragment.app.Fragment() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }
