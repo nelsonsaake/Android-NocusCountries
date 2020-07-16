@@ -10,18 +10,7 @@ import io.reactivex.schedulers.Schedulers
 
 class MainViewModel : ViewModel() {
 
-    var countries : LiveData<ArrayList<CountryInfo>>? = null //TODO()
+    var countries : LiveData<ArrayList<CountryInfo>>? = TODO()
     var err : String? = null
-
-    fun getCountriesDataFromApi(){
-        disposable =
-            countryApiService.getCountriesInfo()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { result -> countries},
-                    { error -> err = error.message}
-                )
-    }
 
 }

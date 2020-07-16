@@ -2,20 +2,15 @@ package com.example.nocuscountries
 
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-val countryApiService by lazy {
-    CountryApiService.create()
-}
-
-var disposable: Disposable? = null
-
 interface CountryApiService{
 
     @Get("all")
-    fun getCountriesInfo() : Observable<CountryInfo>
+    fun getCountriesInfo() : Call<ArrayList<CountryInfo>>
 
     annotation class Get(val endpoint: String)
 
