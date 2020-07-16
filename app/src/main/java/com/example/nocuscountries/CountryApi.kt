@@ -1,7 +1,5 @@
 package com.example.nocuscountries
 
-import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -11,8 +9,6 @@ interface CountryApiService{
 
     @Get("all")
     fun getCountriesInfo() : Call<ArrayList<CountryInfo>>
-
-    annotation class Get(val endpoint: String)
 
     companion object {
         fun create(): CountryApiService {
