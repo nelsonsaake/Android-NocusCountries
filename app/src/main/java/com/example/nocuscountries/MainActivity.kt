@@ -1,8 +1,8 @@
-package com.example.nocuscurrencyconvertor
+package com.example.nocuscountries
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.nocuscurrencyconvertor.ui.main.MainFragment
+import com.example.nocuscountries.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

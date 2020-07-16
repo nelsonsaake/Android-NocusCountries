@@ -1,4 +1,4 @@
-package com.example.nocuscurrencyconvertor
+package com.example.nocuscountries
 
 class Currency(
     val code: String?,

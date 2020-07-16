@@ -1,11 +1,13 @@
-package com.example.nocuscurrencyconvertor.ui.main
+package com.example.nocuscountries.ui.main
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.nocuscurrencyconvertor.R
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import com.example.nocuscountries.R
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : androidx.fragment.app.Fragment() {
@@ -22,8 +24,20 @@ class MainFragment : androidx.fragment.app.Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        viewModel.countries.observe(viewLifecycleOwner){
+
+            message.setText(viewModel.countries.toString())
+        }
     }
 }
+
+private fun <T> LiveData<T>.observe(viewLifecycleOwner: LifecycleOwner, function: () -> Unit) {
+    TODO("Not yet implemented")
+}
+
+

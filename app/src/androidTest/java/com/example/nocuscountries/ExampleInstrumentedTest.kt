@@ -1,4 +1,4 @@
-package com.example.nocuscurrencyconvertor
+package com.example.nocuscountries
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

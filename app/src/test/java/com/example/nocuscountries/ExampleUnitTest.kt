@@ -1,4 +1,4 @@
-package com.example.nocuscurrencyconvertor
+package com.example.nocuscountries
 
 import org.junit.Test
 
