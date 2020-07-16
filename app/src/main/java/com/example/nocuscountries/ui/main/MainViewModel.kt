@@ -10,10 +10,10 @@ import io.reactivex.schedulers.Schedulers
 
 class MainViewModel : ViewModel() {
 
-    var countries : LiveData<ArrayList<CountryInfo>> = TODO()
+    var countries : LiveData<ArrayList<CountryInfo>>? = null //TODO()
     var err : String? = null
 
-    private fun getCountriesDataFromApi(){
+    fun getCountriesDataFromApi(){
         disposable =
             countryApiService.getCountriesInfo()
                 .subscribeOn(Schedulers.io())

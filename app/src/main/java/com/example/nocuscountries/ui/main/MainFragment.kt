@@ -29,9 +29,14 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        viewModel.countries.observe(viewLifecycleOwner){
+        // setup live data something for when we get data back from the api
+        viewModel.countries?.observe(viewLifecycleOwner){
+            message.setText(viewModel?.countries.toString())
+        }
 
-            message.setText(viewModel.countries.toString())
+        // setup action to trigger get data from api
+        message.setOnClickListener {
+            viewModel.getCountriesDataFromApi()
         }
     }
 }
