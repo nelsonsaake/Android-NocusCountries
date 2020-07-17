@@ -8,14 +8,23 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class CountryRepo {
-
-    private val countryApiService : CountryApiService = TODO()
+@Singleton
+class CountryRepo @Inject constructor(
+    private val countryApiService : CountryApiService,
+    private val countryCache : CountryCache
+) {
 
     fun getCountries() : LiveData<ArrayList<CountryInfo>> {
 
+        val cached : LiveData<ArrayList<CountryInfo>> = countryCache.getCountries()
+        if (cached != null) return cached
+
         val data = MutableLiveData<ArrayList<CountryInfo>>()
+        countryCache.put(data)
+
         countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>> {
 
             override fun onFailure(call: Call<ArrayList<CountryInfo>>, t: Throwable) {
