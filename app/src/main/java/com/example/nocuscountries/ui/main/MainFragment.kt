@@ -39,8 +39,5 @@ class MainFragment : androidx.fragment.app.Fragment() {
     }
 }
 
-private fun <T> LiveData<T>.observe(viewLifecycleOwner: LifecycleOwner, function: () -> Unit) {
-    TODO("Not yet implemented")
-}
 
 
