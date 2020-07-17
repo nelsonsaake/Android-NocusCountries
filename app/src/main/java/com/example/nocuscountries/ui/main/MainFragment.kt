@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import com.example.nocuscountries.R
+import com.example.nocuscountries.*
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : androidx.fragment.app.Fragment() {
@@ -27,7 +27,10 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        val countryApiService = CountryApiService.create()
+        val countryCache = CountryCache()
+        val viewModelFactory = ViewModelFactory(CountryRepo(countryApiService, countryCache))
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
         // setup live data something for when we get data back from the api
         viewModel.countries.observe(viewLifecycleOwner){
