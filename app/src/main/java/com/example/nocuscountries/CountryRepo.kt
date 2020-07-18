@@ -23,7 +23,7 @@ class CountryRepo(
         countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>> {
 
             override fun onFailure(call: Call<ArrayList<CountryInfo>>, t: Throwable) {
-                Log.e("NocusCountries", "\n msg: ${t.localizedMessage}; \n localised msg: ${t.message}\n")
+                Log.e("NocusCountries", "msg: ${t.localizedMessage}; \n localised msg: ${t.message}\n")
             }
 
             override fun onResponse(

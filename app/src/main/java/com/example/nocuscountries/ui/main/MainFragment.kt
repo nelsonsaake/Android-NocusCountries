@@ -1,11 +1,11 @@
 package com.example.nocuscountries.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nocuscountries.*
 import com.example.nocuscountries.R
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -27,7 +27,12 @@ class MainFragment : androidx.fragment.app.Fragment() {
         super.onActivityCreated(savedInstanceState)
     }
 
-    fun dothething(){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getCountriesFromApi()
+    }
+
+    private fun getCountriesFromApi(){
 
         val viewModelFactory = ViewModelFactory()
         viewModel = ViewModelProvider(
@@ -35,15 +40,10 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
         // setup live data something for when we get data back from the apic
         viewModel.countries.observe(viewLifecycleOwner, Observer {
-                message.text = viewModel.countries.value.toString()
-                Log.i("NocusCountries", "login commit changes!\n")
-            }
+            countryRecyclerView.layoutManager = LinearLayoutManager(context)
+            countryRecyclerView.adapter = CountryRecyclerAdapter(this!!.requireContext(), viewModel.countries.value!!)
+        }
         )
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        dothething()
     }
 }
 
