@@ -1,25 +1,20 @@
 package com.example.nocuscountries
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class CountryRepo @Inject constructor(
+class CountryRepo(
     private val countryApiService : CountryApiService,
     private val countryCache : CountryCache
 ) {
 
     fun getCountries() : LiveData<ArrayList<CountryInfo>> {
 
-        val cached : LiveData<ArrayList<CountryInfo>> = countryCache.getCountries()
+        val cached : LiveData<ArrayList<CountryInfo>>? = countryCache.getCountries()
         if (cached != null) return cached
 
         val data = MutableLiveData<ArrayList<CountryInfo>>()
@@ -28,7 +23,7 @@ class CountryRepo @Inject constructor(
         countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>> {
 
             override fun onFailure(call: Call<ArrayList<CountryInfo>>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.e("NocusCountries", "\n msg: ${t.localizedMessage}; \n localised msg: ${t.message}\n")
             }
 
             override fun onResponse(
@@ -36,8 +31,10 @@ class CountryRepo @Inject constructor(
                 response: Response<ArrayList<CountryInfo>>
             ) {
                 data.value = response.body()
+                Log.i("NocusCountries", "country response from http api call\n")
             }
         })
+
         return data
     }
 

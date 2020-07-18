@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.nocuscountries.CountryInfo
 import com.example.nocuscountries.CountryRepo
-import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
+class MainViewModel(
     countryRepo: CountryRepo
 ) : ViewModel() {
 

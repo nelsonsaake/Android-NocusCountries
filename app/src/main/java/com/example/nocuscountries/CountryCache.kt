@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 
 class CountryCache {
 
-    private var countriesInfo: LiveData<ArrayList<CountryInfo>>
+    private var countriesInfo: MutableLiveData<ArrayList<CountryInfo>>?
 
-    init{
-        countriesInfo = MutableLiveData<ArrayList<CountryInfo>>()
+    init {
+        countriesInfo = null
     }
 
-    fun getCountries(): LiveData<ArrayList<CountryInfo>> {
+    fun getCountries(): LiveData<ArrayList<CountryInfo>>? {
         return countriesInfo
     }
 
