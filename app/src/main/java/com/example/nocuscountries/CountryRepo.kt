@@ -3,6 +3,7 @@ package com.example.nocuscountries
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.Dispatchers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,15 +14,20 @@ class CountryRepo(
     private val countryInfoDao: CountryInfoDao
 ) {
 
-   //  val countries: LiveData<ArrayList<CountryInfo>> = countryInfoDao.getCountries()
-
     fun getCountries() : LiveData<ArrayList<CountryInfo>> {
 
         val cached : LiveData<ArrayList<CountryInfo>>? = countryCache.getCountries()
         if (cached != null) return cached
 
+        val db = launch(Dispatchers.IO){
+            countryInfoDao.getCountries()
+        }
+        if (db != null) return db
+
         val data = MutableLiveData<ArrayList<CountryInfo>>()
+
         countryCache.put(data)
+        countryInfoDao.insert(data)
 
         countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>> {
 
@@ -40,8 +46,6 @@ class CountryRepo(
 
         return data
     }
-
-    // countr
 }
 
 
