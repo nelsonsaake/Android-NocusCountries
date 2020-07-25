@@ -1,5 +1,8 @@
 package com.example.nocuscountries
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 data class Currencies (
 
     val code : String,
@@ -37,8 +40,10 @@ data class Translations (
     val fa : String
 )
 
+@Entity
 data class CountryInfo (
 
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val name : String,
     val topLevelDomain : List<String>,
     val alpha2Code : String,
