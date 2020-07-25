@@ -9,8 +9,11 @@ import retrofit2.Response
 
 class CountryRepo(
     private val countryApiService : CountryApiService,
-    private val countryCache : CountryCache
+    private val countryCache : CountryCache,
+    private val countryInfoDao: CountryInfoDao
 ) {
+
+   //  val countries: LiveData<ArrayList<CountryInfo>> = countryInfoDao.getCountries()
 
     fun getCountries() : LiveData<ArrayList<CountryInfo>> {
 
@@ -38,6 +41,7 @@ class CountryRepo(
         return data
     }
 
+    // countr
 }
 
 
