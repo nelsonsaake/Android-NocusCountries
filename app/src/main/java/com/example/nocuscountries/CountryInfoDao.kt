@@ -8,12 +8,12 @@ import androidx.room.Query
 @Dao
 interface CountryInfoDao {
 
+    @Insert
+    suspend fun insert(countries: ArrayList<CountryInfo>)
+
     @Query("SELECT * FROM CountryInfo")
-    suspend fun getCountries() : LiveData<ArrayList<CountryInfo>>
+    fun getCountries() : LiveData<ArrayList<CountryInfo>>
 
     @Query("DELETE FROM CountryInfo")
     suspend fun  delete()
-
-    @Insert
-    suspend fun insert(countries: ArrayList<CountryInfo>)
 }

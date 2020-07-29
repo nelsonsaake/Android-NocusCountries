@@ -1,9 +1,12 @@
-package com.example.nocuscountries
-
+import com.example.nocuscountries.CountryCache
+import com.example.nocuscountries.CountryInfo
+import com.example.nocuscountries.CountryInfoDao
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.Dispatchers
+import com.example.nocuscountries.CountryApiService
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,20 +17,21 @@ class CountryRepo(
     private val countryInfoDao: CountryInfoDao
 ) {
 
-    fun getCountries() : LiveData<ArrayList<CountryInfo>> {
+    suspend fun getCountries() : LiveData<ArrayList<CountryInfo>> {
 
+        // check inmemory - cache
         val cached : LiveData<ArrayList<CountryInfo>>? = countryCache.getCountries()
         if (cached != null) return cached
 
-        val db = launch(Dispatchers.IO){
-            countryInfoDao.getCountries()
-        }
+        // check disk - db
+        val db = countryInfoDao.getCountries()
         if (db != null) return db
 
+        // pull from api
         val data = MutableLiveData<ArrayList<CountryInfo>>()
 
+        // add to cache
         countryCache.put(data)
-        countryInfoDao.insert(data)
 
         countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>> {
 
@@ -39,8 +43,16 @@ class CountryRepo(
                 call: Call<ArrayList<CountryInfo>>,
                 response: Response<ArrayList<CountryInfo>>
             ) {
-                data.value = response.body()
+                val res = response.body()
+                // data.value = response.body()
                 Log.i("NocusCountries", "country response from http api call\n")
+
+                // save response to db
+                GlobalScope.launch {
+                    countryInfoDao.delete()
+                    res?.let { countryInfoDao.insert(it) }
+                    data.value = countryInfoDao.getCountries().value
+                }
             }
         })
 
