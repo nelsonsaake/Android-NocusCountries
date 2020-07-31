@@ -1,8 +1,5 @@
 package com.example.nocuscountries
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
 data class Currencies (
 
     val code : String,
@@ -40,36 +37,31 @@ data class Translations (
     val fa : String
 )
 
-class TopLevelDomain
-
-@Entity
 data class CountryInfo (
 
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
     val name : String,
-//    val topLevelDomain : List<String>,
+    val topLevelDomain : List<String>,
     val alpha2Code : String,
     val alpha3Code : String,
-//    val callingCodes : List<String>,
+    val callingCodes : List<String>,
     val capital : String,
-//    val altSpellings : List<String>,
+    val altSpellings : List<String>,
     val region : String,
     val subregion : String,
     val population : Int,
-//    val latlng : List<Double>,
+    val latlng : List<Double>,
     val demonym : String,
     val area : Double,
     val gini : Double,
-//    val timezones : List<String>,
-//    val borders : List<String>,
+    val timezones : List<String>,
+    val borders : List<String>,
     val nativeName : String,
     val numericCode : Int,
-//    val currencies : List<Currencies>,
-//    val languages : List<Languages>,
+    val currencies : List<Currencies>,
+    val languages : List<Languages>,
     val translations : Translations,
     val flag : String,
-//    val regionalBlocs : List<RegionalBlocs>,
+    val regionalBlocs : List<RegionalBlocs>,
     val cioc : String
 )
 

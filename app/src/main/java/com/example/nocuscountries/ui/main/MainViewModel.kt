@@ -1,9 +1,9 @@
 package com.example.nocuscountries.ui.main
 
+import CountryRepo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.nocuscountries.CountryInfo
-import com.example.nocuscountries.CountryRepo
 
 class MainViewModel(
     countryRepo: CountryRepo

@@ -18,8 +18,10 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
@@ -32,18 +34,19 @@ class MainFragment : androidx.fragment.app.Fragment() {
         getCountriesFromApi()
     }
 
-    private fun getCountriesFromApi(){
+    private fun getCountriesFromApi() {
 
         val viewModelFactory = ViewModelFactory()
         viewModel = ViewModelProvider(
-            this, viewModelFactory).get(MainViewModel::class.java)
+            this, viewModelFactory
+        ).get(MainViewModel::class.java)
 
         // setup live data something for when we get data back from the apic
         viewModel.countries.observe(viewLifecycleOwner, Observer {
             countryRecyclerView.layoutManager = LinearLayoutManager(context)
-            countryRecyclerView.adapter = CountryRecyclerAdapter(this!!.requireContext(), viewModel.countries.value!!)
-        }
-        )
+            countryRecyclerView.adapter =
+                CountryRecyclerAdapter(this!!.requireContext(), viewModel.countries.value!!)
+        })
     }
 }
 

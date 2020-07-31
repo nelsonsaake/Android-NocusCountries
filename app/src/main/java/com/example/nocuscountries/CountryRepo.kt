@@ -1,31 +1,23 @@
-import com.example.nocuscountries.CountryCache
-import com.example.nocuscountries.CountryInfo
-import com.example.nocuscountries.CountryInfoDao
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.nocuscountries.CountryApiService
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.nocuscountries.CountryCache
+import com.example.nocuscountries.CountryInfo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class CountryRepo(
     private val countryApiService : CountryApiService,
-    private val countryCache : CountryCache,
-    private val countryInfoDao: CountryInfoDao
+    private val countryCache : CountryCache
 ) {
 
-    suspend fun getCountries() : LiveData<ArrayList<CountryInfo>> {
+    fun getCountries() : LiveData<ArrayList<CountryInfo>> {
 
-        // check inmemory - cache
+        // check in-memory - cache
         val cached : LiveData<ArrayList<CountryInfo>>? = countryCache.getCountries()
         if (cached != null) return cached
-
-        // check disk - db
-        val db = countryInfoDao.getCountries()
-        if (db != null) return db
 
         // pull from api
         val data = MutableLiveData<ArrayList<CountryInfo>>()
@@ -43,16 +35,8 @@ class CountryRepo(
                 call: Call<ArrayList<CountryInfo>>,
                 response: Response<ArrayList<CountryInfo>>
             ) {
-                val res = response.body()
-                // data.value = response.body()
+                data.value = response.body()
                 Log.i("NocusCountries", "country response from http api call\n")
-
-                // save response to db
-                GlobalScope.launch {
-                    countryInfoDao.delete()
-                    res?.let { countryInfoDao.insert(it) }
-                    data.value = countryInfoDao.getCountries().value
-                }
             }
         })
 
