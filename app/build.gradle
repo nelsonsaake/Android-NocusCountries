@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt' // room
 
 android {
     compileSdkVersion 29
@@ -26,6 +26,7 @@ android {
         }
     }
 
+    // for room
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
@@ -89,4 +90,5 @@ dependencies {
     // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+
 }

@@ -1,5 +1,6 @@
 package com.example.nocuscountries.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +37,7 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
     private fun getCountriesFromApi() {
 
-        val viewModelFactory = ViewModelFactory()
+        val viewModelFactory = MainViewModelFactory(this.context as Context, viewLifecycleOwner)
         viewModel = ViewModelProvider(
             this, viewModelFactory
         ).get(MainViewModel::class.java)

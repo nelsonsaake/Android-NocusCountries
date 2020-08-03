@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
-import kotlin.random.Random
 
 class CountryRecyclerAdapter(private val context: Context,
                              private val countries: ArrayList<CountryInfo>) :
@@ -29,10 +28,10 @@ class CountryRecyclerAdapter(private val context: Context,
         holder.countryNameText?.text = countryInfo.name
         holder.briefDetailsText?.text = "${countryInfo.alpha2Code}\t|\tPopulation: ${countryInfo.population}"
         holder.countryName = countryInfo.name
-        setCountryFlag(holder, countryInfo.alpha2Code)
+        setCountryFlag(holder, countryInfo.flag)
     }
 
-    fun setCountryFlag(holder: ViewHolder, alpha2Code: String){
+    fun setCountryFlag(holder: ViewHolder, flagURL: String){
 
         /*
          * examples:
@@ -41,15 +40,18 @@ class CountryRecyclerAdapter(private val context: Context,
          *
          * template:
          * "https://www.countryflags.io/:country_code/:style/:size.png"
+         *
+         * use this string to build url for the flag:
+         * "https://www.countryflags.io/${alpha2Code}/shiny/64.png"
          */
+
+
 
         Picasso
             .with(context)
-            .load("https://www.countryflags.io/${alpha2Code}/shiny/64.png")
-            .resize(120,120)
-//            .error(R.drawable.ic_baseline_emoji_flags_24)
-            .rotate(Random.nextInt(-5,5).toFloat())
-//            .placeholder(R.drawable.ic_baseline_emoji_flags_24)
+            .load(flagURL)
+            .error(R.drawable.ic_baseline_emoji_flags_24)
+            .placeholder(R.drawable.ic_baseline_emoji_flags_24)
             .into(holder.countryFlag)
     }
 

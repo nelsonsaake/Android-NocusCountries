@@ -25,6 +25,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+// room
 ext {
     roomVersion = '2.2.5'
     archLifecycleVersion = '2.2.0'

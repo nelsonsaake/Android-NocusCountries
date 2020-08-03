@@ -1,13 +1,13 @@
 package com.example.nocuscountries.ui.main
 
-import CountryRepo
+import com.example.nocuscountries.CountryRepo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.nocuscountries.CountryInfo
 
 class MainViewModel(
-    countryRepo: CountryRepo
+    private val countryRepo: CountryRepo
 ) : ViewModel() {
 
-    var countries : LiveData<ArrayList<CountryInfo>> = countryRepo.getCountries()
+    var countries : LiveData<ArrayList<CountryInfo>> = countryRepo.refreshCountryInfoData()
 }
