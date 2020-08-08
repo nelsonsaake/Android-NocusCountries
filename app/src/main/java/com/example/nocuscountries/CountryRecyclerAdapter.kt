@@ -28,10 +28,10 @@ class CountryRecyclerAdapter(private val context: Context,
         holder.countryNameText?.text = countryInfo.name
         holder.briefDetailsText?.text = "${countryInfo.alpha2Code}\t|\tPopulation: ${countryInfo.population}"
         holder.countryName = countryInfo.name
-        setCountryFlag(holder, countryInfo.flag)
+        setCountryFlag(holder, countryInfo)
     }
 
-    fun setCountryFlag(holder: ViewHolder, flagURL: String){
+    fun setCountryFlag(holder: ViewHolder, country: CountryInfo){
 
         /*
          * examples:
@@ -45,13 +45,9 @@ class CountryRecyclerAdapter(private val context: Context,
          * "https://www.countryflags.io/${alpha2Code}/shiny/64.png"
          */
 
-
-
         Picasso
             .with(context)
-            .load(flagURL)
-            .error(R.drawable.ic_baseline_emoji_flags_24)
-            .placeholder(R.drawable.ic_baseline_emoji_flags_24)
+            .load("https://www.countryflags.io/${country.alpha2Code}/shiny/64.png")
             .into(holder.countryFlag)
     }
 

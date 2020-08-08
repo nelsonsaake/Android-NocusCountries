@@ -42,7 +42,7 @@ class MainFragment : androidx.fragment.app.Fragment() {
             this, viewModelFactory
         ).get(MainViewModel::class.java)
 
-        // setup live data something for when we get data back from the apic
+        // setup live data something for when we get data back from the api
         viewModel.countries.observe(viewLifecycleOwner, Observer {
             countryRecyclerView.layoutManager = LinearLayoutManager(context)
             countryRecyclerView.adapter =
