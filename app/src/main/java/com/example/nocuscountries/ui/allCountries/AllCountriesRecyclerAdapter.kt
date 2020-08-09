@@ -19,7 +19,7 @@ class AllCountriesRecyclerAdapter(private val context: Context,
     private val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.all_country_list_item, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.main_all_country_list_item, parent, false)
         return ViewHolder(itemView)
     }
 

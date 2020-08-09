@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nocuscountries.R
 import com.example.nocuscountries.factories.MainViewModelFactory
 import com.example.nocuscountries.viewModels.MainViewModel
-import kotlinx.android.synthetic.main.all_countries_fragment.*
+import kotlinx.android.synthetic.main.main_all_countries_fragment.*
 
 class AllCountriesFragment : androidx.fragment.app.Fragment() {
 
@@ -25,7 +25,7 @@ class AllCountriesFragment : androidx.fragment.app.Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.all_countries_fragment, container, false)
+        return inflater.inflate(R.layout.main_all_countries_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
