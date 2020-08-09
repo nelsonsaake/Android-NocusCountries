@@ -12,10 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
 
         if (savedInstanceState == null) {
-            viewLandingPage()
-        }
-
-        landingButton.setOnClickListener {
             viewAllCountries()
         }
     }
