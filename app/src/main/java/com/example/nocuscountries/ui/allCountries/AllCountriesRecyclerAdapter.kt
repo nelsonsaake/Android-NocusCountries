@@ -1,4 +1,4 @@
-package com.example.nocuscountries
+package com.example.nocuscountries.ui.allCountries
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nocuscountries.R
+import com.example.nocuscountries.dataClasses.CountryInfo
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
-class CountryRecyclerAdapter(private val context: Context,
-                             private val countries: ArrayList<CountryInfo>) :
-    RecyclerView.Adapter<CountryRecyclerAdapter.ViewHolder>(){
+class AllCountriesRecyclerAdapter(private val context: Context,
+                                  private val countries: ArrayList<CountryInfo>) :
+    RecyclerView.Adapter<AllCountriesRecyclerAdapter.ViewHolder>(){
 
     private val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.country_list_item, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.all_country_list_item, parent, false)
         return ViewHolder(itemView)
     }
 

@@ -1,4 +1,4 @@
-package com.example.nocuscountries.db
+package com.example.nocuscountries.countryDatabase
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,4 +1,4 @@
-package com.example.nocuscountries.ui.main
+package com.example.nocuscountries.ui.allCountries
 
 import android.content.Context
 import android.os.Bundle
@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nocuscountries.*
 import com.example.nocuscountries.R
-import kotlinx.android.synthetic.main.main_fragment.*
+import com.example.nocuscountries.factories.MainViewModelFactory
+import com.example.nocuscountries.viewModels.MainViewModel
+import kotlinx.android.synthetic.main.all_countries_fragment.*
 
-class MainFragment : androidx.fragment.app.Fragment() {
+class AllCountriesFragment : androidx.fragment.app.Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() =
+            AllCountriesFragment()
     }
 
     private lateinit var viewModel: MainViewModel
@@ -23,7 +25,7 @@ class MainFragment : androidx.fragment.app.Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.all_countries_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -37,7 +39,11 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
     private fun getCountriesFromApi() {
 
-        val viewModelFactory = MainViewModelFactory(this.context as Context, viewLifecycleOwner)
+        val viewModelFactory =
+            MainViewModelFactory(
+                this.context as Context,
+                viewLifecycleOwner
+            )
         viewModel = ViewModelProvider(
             this, viewModelFactory
         ).get(MainViewModel::class.java)
@@ -46,7 +52,10 @@ class MainFragment : androidx.fragment.app.Fragment() {
         viewModel.countries.observe(viewLifecycleOwner, Observer {
             countryRecyclerView.layoutManager = LinearLayoutManager(context)
             countryRecyclerView.adapter =
-                CountryRecyclerAdapter(this!!.requireContext(), viewModel.countries.value!!)
+                AllCountriesRecyclerAdapter(
+                    this!!.requireContext(),
+                    viewModel.countries.value!!
+                )
         })
     }
 }

@@ -1,4 +1,4 @@
-package com.example.nocuscountries.db
+package com.example.nocuscountries.countryDatabase
 
 import android.content.Context
 import androidx.room.Database

@@ -1,4 +1,4 @@
-package com.example.nocuscountries
+package com.example.nocuscountries.dataClasses
 
 data class Currencies (
 

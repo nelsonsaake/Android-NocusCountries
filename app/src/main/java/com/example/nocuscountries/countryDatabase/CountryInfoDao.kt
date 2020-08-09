@@ -1,8 +1,6 @@
-package com.example.nocuscountries.db
+package com.example.nocuscountries.countryDatabase
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Query
 
 @Dao
 interface CountryInfoDao {

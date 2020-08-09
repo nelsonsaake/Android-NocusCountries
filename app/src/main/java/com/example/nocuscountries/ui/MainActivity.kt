@@ -1,9 +1,9 @@
-package com.example.nocuscountries
+package com.example.nocuscountries.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nocuscountries.ui.main.MainFragment
-import kotlinx.android.synthetic.main.landing_fragment.*
+import com.example.nocuscountries.R
+import com.example.nocuscountries.ui.allCountries.AllCountriesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,12 +19,7 @@ class MainActivity : AppCompatActivity() {
     private fun viewAllCountries() =
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.container, MainFragment.newInstance())
+            .replace(R.id.container, AllCountriesFragment.newInstance())
             .commitNow()
 
-    private fun viewLandingPage() =
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container, LandingFragment.newInstance())
-            .commitNow()
 }

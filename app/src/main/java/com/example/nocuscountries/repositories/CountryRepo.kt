@@ -1,15 +1,13 @@
-package com.example.nocuscountries
+package com.example.nocuscountries.repositories
 
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import com.example.nocuscountries.CountryApiService
-import com.example.nocuscountries.CountryCache
-import com.example.nocuscountries.CountryInfo
-import com.example.nocuscountries.db.CountryInfoDatabase
+import com.example.nocuscountries.api.CountryApiService
+import com.example.nocuscountries.cache.CountryCache
+import com.example.nocuscountries.dataClasses.CountryInfo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

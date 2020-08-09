@@ -1,5 +1,6 @@
-package com.example.nocuscountries
+package com.example.nocuscountries.api
 
+import com.example.nocuscountries.dataClasses.CountryInfo
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

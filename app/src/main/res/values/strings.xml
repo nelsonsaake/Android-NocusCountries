@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Countries</string>
-    <string name="next">next</string>
+    <string name="all_countries">All Countries</string>
     <string name="intro_text">Countries, Tourist attraction, Cities Mountains, Rivers</string>
     <string name="title_activity_landing_page">ScrollingActivity</string>
     <string name="large_text">
