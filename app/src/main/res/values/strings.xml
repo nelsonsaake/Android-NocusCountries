@@ -2,7 +2,7 @@
     <string name="app_name">Countries</string>
     <string name="all_countries">All Countries</string>
     <string name="intro_text">Countries, Tourist attraction, Cities Mountains, Rivers</string>
-    <string name="title_activity_landing_page">ScrollingActivity</string>
+    <string name="title_activity_landing_page">Countries</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -93,4 +93,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="name">Search Country By Name</string>
+    <string name="full_name">Search by country full name</string>
 </resources>
