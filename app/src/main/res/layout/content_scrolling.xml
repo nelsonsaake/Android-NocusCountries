@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.LandingPageActivity"
+    tools:showIn="@layout/activity_landing_page">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentPadding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/allButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:padding="15dp"
+                android:text="@string/all_countries"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/LandingText"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/nameButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:padding="15dp"
+                android:text="@string/name"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/LandingText"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/fullNameButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:padding="15dp"
+                android:text="@string/full_name"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/LandingText"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/codeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:padding="15dp"
+                android:text="@string/code"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/LandingText"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.core.widget.NestedScrollView>
