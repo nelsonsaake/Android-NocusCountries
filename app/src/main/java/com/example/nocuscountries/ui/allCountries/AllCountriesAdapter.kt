@@ -12,9 +12,9 @@ import com.example.nocuscountries.dataClasses.CountryInfo
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
-class AllCountriesRecyclerAdapter(private val context: Context,
-                                  private val countries: ArrayList<CountryInfo>) :
-    RecyclerView.Adapter<AllCountriesRecyclerAdapter.ViewHolder>(){
+class AllCountriesAdapter(private val context: Context,
+                          private val countries: ArrayList<CountryInfo>) :
+    RecyclerView.Adapter<AllCountriesAdapter.ViewHolder>(){
 
     private val layoutInflater = LayoutInflater.from(context)
 

@@ -22,4 +22,9 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.container, AllCountriesFragment.newInstance())
             .commitNow()
 
+    private fun countryPage() =
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, AllCountriesFragment.newInstance())
+            .commitNow()
 }

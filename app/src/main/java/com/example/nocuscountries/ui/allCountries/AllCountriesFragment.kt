@@ -52,7 +52,7 @@ class AllCountriesFragment : androidx.fragment.app.Fragment() {
         viewModel.countries.observe(viewLifecycleOwner, Observer {
             countryRecyclerView.layoutManager = LinearLayoutManager(context)
             countryRecyclerView.adapter =
-                AllCountriesRecyclerAdapter(
+                AllCountriesAdapter(
                     this!!.requireContext(),
                     viewModel.countries.value!!
                 )
