@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    -->
     <color name="colorPrimary">#2badad</color>
     <color name="colorPrimaryDark">#425573</color>
     <color name="colorAccent">#505050</color>
+<!--  brand color  -->
+    <color name="colorPaleBlue">#f3f6fb</color>
+<!--  background  -->
     <color name="backgroundColor">#f3f6fb</color>
+    <color name="headerBackgroundColor">@color/colorPaleBlue</color>
+<!--  font  -->
+    <color name="color">#505050</color>
+    <color name="colorGray">#9090AA</color>
+    <color name="linkColor">#2BADAD</color>
 </resources>

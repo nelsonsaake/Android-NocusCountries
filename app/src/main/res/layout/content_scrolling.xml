@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_landing_page">
 
     <androidx.cardview.widget.CardView
+        style="@style/contentDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentPadding="15dp">
@@ -18,49 +19,85 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView"
+                style="@style/contentDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/intro_text"
+                android:textAppearance="@style/paragraph" />
+
             <Button
                 android:id="@+id/allButton"
+                style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backgroundColor"
                 android:padding="15dp"
                 android:text="@string/all_countries"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/LandingText"
+                android:textAppearance="@style/h2"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
 
             <Button
                 android:id="@+id/nameButton"
+                style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backgroundColor"
                 android:padding="15dp"
                 android:text="@string/name"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/LandingText"
+                android:textAppearance="@style/h2"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
 
             <Button
                 android:id="@+id/fullNameButton"
+                style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backgroundColor"
                 android:padding="15dp"
                 android:text="@string/full_name"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/LandingText"
+                android:textAppearance="@style/h2"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
 
             <Button
                 android:id="@+id/codeButton"
+                style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backgroundColor"
                 android:padding="15dp"
                 android:text="@string/code"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/LandingText"
+                android:textAppearance="@style/h2"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.core.widget.NestedScrollView>

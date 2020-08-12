@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Countries</string>
-    <string name="intro_text">Countries, Tourist attraction, Cities Mountains, Rivers</string>
+    <string name="intro_text_old">Countries, Tourist attraction, Cities Mountains, Rivers</string>
+    <string name="intro_text">This app consumes all endpoints on restcountries.eu API</string>
     <string name="title_activity_landing_page">Countries</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
