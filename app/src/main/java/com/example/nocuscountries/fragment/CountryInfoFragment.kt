@@ -1,4 +1,4 @@
-package com.example.nocuscountries
+package com.example.nocuscountries.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.nocuscountries.R
 import com.example.nocuscountries.dummy.DummyContent
+import com.example.nocuscountries.adapter.CountryInfotAdapter
 
 /**
  * A fragment representing a list of Items.
@@ -38,7 +40,10 @@ class CountryInfoFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = CountryInfotAdapter(DummyContent.ITEMS)
+                adapter =
+                    CountryInfotAdapter(
+                        DummyContent.ITEMS
+                    )
             }
         }
         return view

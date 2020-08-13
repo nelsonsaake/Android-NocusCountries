@@ -1,9 +1,9 @@
-package com.example.nocuscountries.viewModels
+package com.example.nocuscountries.viewModel
 
-import com.example.nocuscountries.repositories.CountryRepo
+import com.example.nocuscountries.repository.CountryRepo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.nocuscountries.dataClasses.CountryInfo
+import com.example.nocuscountries.dataClasse.CountryInfo
 
 class MainViewModel(
     private val countryRepo: CountryRepo

@@ -1,9 +1,9 @@
-package com.example.nocuscountries.ui
+package com.example.nocuscountries.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nocuscountries.R
-import com.example.nocuscountries.ui.allCountries.AllCountriesFragment
+import com.example.nocuscountries.fragment.AllCountriesFragment
 
 class MainActivity : AppCompatActivity() {
 

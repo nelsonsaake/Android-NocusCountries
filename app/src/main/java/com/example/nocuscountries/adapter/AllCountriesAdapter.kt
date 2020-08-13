@@ -1,4 +1,4 @@
-package com.example.nocuscountries.ui.allCountries
+package com.example.nocuscountries.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nocuscountries.R
-import com.example.nocuscountries.dataClasses.CountryInfo
+import com.example.nocuscountries.dataClasse.CountryInfo
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 

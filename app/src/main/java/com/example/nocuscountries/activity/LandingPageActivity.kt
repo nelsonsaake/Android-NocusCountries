@@ -1,4 +1,4 @@
-package com.example.nocuscountries.ui
+package com.example.nocuscountries.activity
 
 import android.content.Intent
 import android.os.Bundle

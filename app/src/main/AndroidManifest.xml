@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.LandingPageActivity"
+            android:name=".activity.LandingPageActivity"
             android:label="@string/title_activity_landing_page"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

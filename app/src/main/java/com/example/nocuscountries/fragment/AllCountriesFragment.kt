@@ -1,4 +1,4 @@
-package com.example.nocuscountries.ui.allCountries
+package com.example.nocuscountries.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nocuscountries.R
-import com.example.nocuscountries.factories.MainViewModelFactory
-import com.example.nocuscountries.viewModels.MainViewModel
+import com.example.nocuscountries.factory.MainViewModelFactory
+import com.example.nocuscountries.adapter.AllCountriesAdapter
+import com.example.nocuscountries.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.main_all_countries_fragment.*
 
 class AllCountriesFragment : androidx.fragment.app.Fragment() {

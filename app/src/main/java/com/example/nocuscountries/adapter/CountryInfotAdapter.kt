@@ -1,10 +1,11 @@
-package com.example.nocuscountries
+package com.example.nocuscountries.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.nocuscountries.R
 
 import com.example.nocuscountries.dummy.DummyContent.DummyItem
 
