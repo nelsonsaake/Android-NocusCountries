@@ -9,15 +9,15 @@ import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nocuscountries.R
 import com.example.nocuscountries.factory.MainViewModelFactory
-import com.example.nocuscountries.adapter.AllCountriesAdapter
+import com.example.nocuscountries.adapter.CountryListAdapter
 import com.example.nocuscountries.viewModel.MainViewModel
-import kotlinx.android.synthetic.main.main_all_countries_fragment.*
+import kotlinx.android.synthetic.main.fragment_country_list.*
 
-class AllCountriesFragment : androidx.fragment.app.Fragment() {
+class CountryListFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         fun newInstance() =
-            AllCountriesFragment()
+            CountryListFragment()
     }
 
     private lateinit var viewModel: MainViewModel
@@ -26,7 +26,7 @@ class AllCountriesFragment : androidx.fragment.app.Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_all_countries_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_country_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class AllCountriesFragment : androidx.fragment.app.Fragment() {
         viewModel.countries.observe(viewLifecycleOwner, Observer {
             countryRecyclerView.layoutManager = LinearLayoutManager(context)
             countryRecyclerView.adapter =
-                AllCountriesAdapter(
+                CountryListAdapter(
                     this!!.requireContext(),
                     viewModel.countries.value!!
                 )

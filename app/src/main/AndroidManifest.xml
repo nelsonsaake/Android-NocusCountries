@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.CountryInfoActivity"
+            android:label="@string/title_activity_country_info"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".activity.LandingPageActivity"
             android:label="@string/title_activity_landing_page"
             android:theme="@style/AppTheme.NoActionBar">
@@ -22,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.CountryListActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

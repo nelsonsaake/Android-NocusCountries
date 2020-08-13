@@ -19,7 +19,7 @@ class LandingPageActivity : AppCompatActivity() {
         findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
 
         allButton.setOnClickListener {
-            startActivity(Intent(applicationContext, MainActivity::class.java))
+            startActivity(Intent(applicationContext, CountryListActivity::class.java))
         }
     }
 }

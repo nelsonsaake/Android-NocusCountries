@@ -12,14 +12,14 @@ import com.example.nocuscountries.dataClasse.CountryInfo
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
-class AllCountriesAdapter(private val context: Context,
-                          private val countries: ArrayList<CountryInfo>) :
-    RecyclerView.Adapter<AllCountriesAdapter.ViewHolder>(){
+class CountryListAdapter(private val context: Context,
+                         private val countries: ArrayList<CountryInfo>) :
+    RecyclerView.Adapter<CountryListAdapter.ViewHolder>(){
 
     private val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.main_all_country_list_item, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.country_list_item, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -59,6 +59,7 @@ class AllCountriesAdapter(private val context: Context,
         init {
             itemView?.setOnClickListener {
                 Snackbar.make(it, countryName, Snackbar.LENGTH_LONG).show()
+
             }
         }
 
