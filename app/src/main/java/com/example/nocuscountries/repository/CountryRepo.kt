@@ -27,7 +27,6 @@ class CountryRepo(
 
         // check the db
 
-
         // pull from api
         val data = MutableLiveData<ArrayList<CountryInfo>>()
 

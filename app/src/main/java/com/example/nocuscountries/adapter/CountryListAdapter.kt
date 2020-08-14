@@ -59,7 +59,6 @@ class CountryListAdapter(private val context: Context,
         init {
             itemView?.setOnClickListener {
                 Snackbar.make(it, countryName, Snackbar.LENGTH_LONG).show()
-
             }
         }
 
