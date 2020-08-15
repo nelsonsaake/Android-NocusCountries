@@ -11,9 +11,7 @@ class CountryListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_country_list)
 
-        if (savedInstanceState == null) {
-            viewAllCountries()
-        }
+        viewAllCountries()
     }
 
     private fun viewAllCountries() =

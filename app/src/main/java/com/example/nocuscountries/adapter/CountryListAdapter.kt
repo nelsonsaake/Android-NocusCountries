@@ -1,22 +1,28 @@
 package com.example.nocuscountries.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nocuscountries.R
-import com.example.nocuscountries.dataClasse.CountryInfo
+import com.example.nocuscountries.activity.CountryInfoActivity
+import com.example.nocuscountries.dataClass.CountryInfo
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 class CountryListAdapter(private val context: Context,
-                         private val countries: ArrayList<CountryInfo>) :
+                         private var countries: ArrayList<CountryInfo> = ArrayList<CountryInfo>()
+) :
     RecyclerView.Adapter<CountryListAdapter.ViewHolder>(){
 
     private val layoutInflater = LayoutInflater.from(context)
+    private val ALPHA_2_CODE: String = "alpha2code"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = layoutInflater.inflate(R.layout.country_list_item, parent, false)
@@ -29,7 +35,8 @@ class CountryListAdapter(private val context: Context,
         val countryInfo = countries[position]
         holder.countryNameText?.text = countryInfo.name
         holder.briefDetailsText?.text = "${countryInfo.alpha2Code}\t|\tPopulation: ${countryInfo.population}"
-        holder.countryName = countryInfo.name
+        holder.name = countryInfo.name
+        holder.alpha2code = countryInfo.alpha2Code
         setCountryFlag(holder, countryInfo)
     }
 
@@ -53,17 +60,33 @@ class CountryListAdapter(private val context: Context,
             .into(holder.countryFlag)
     }
 
+    fun setData(countries: ArrayList<CountryInfo>){
+        this.countries = countries
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
-        var countryName = ""
-        init {
-            itemView?.setOnClickListener {
-                Snackbar.make(it, countryName, Snackbar.LENGTH_LONG).show()
-            }
-        }
-
+        var name = "Ghana"
+        var alpha2code = "gh"
         val countryNameText = itemView?.findViewById<TextView?>(R.id.countryNameText)
         val briefDetailsText = itemView?.findViewById<TextView?>(R.id.briefDetailsText)
         val countryFlag = itemView?.findViewById<ImageView?>(R.id.imageView)
+
+        init {
+            itemView?.setOnClickListener {
+
+                // display the country selected name
+                Snackbar.make(it, name, Snackbar.LENGTH_LONG).show()
+
+                // display ui presentation of the country selected
+                val intent = Intent(context, CountryInfoActivity::class.java)
+                val options = Bundle()
+                options.putString(ALPHA_2_CODE, alpha2code)
+                startActivity(context, intent, options)
+            }
+        }
+
     }
+
 }

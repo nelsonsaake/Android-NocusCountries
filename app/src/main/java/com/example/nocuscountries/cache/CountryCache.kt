@@ -2,7 +2,7 @@ package com.example.nocuscountries.cache
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.nocuscountries.dataClasse.CountryInfo
+import com.example.nocuscountries.dataClass.CountryInfo
 
 class CountryCache {
 

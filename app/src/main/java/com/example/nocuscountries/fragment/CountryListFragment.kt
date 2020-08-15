@@ -45,7 +45,7 @@ class CountryListFragment : androidx.fragment.app.Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         // setup live data something for when we get data back from the api
-        viewModel.countries.observe(this, Observer {
+        viewModel.countries.observe(viewLifecycleOwner, Observer {
             countryRecyclerView.layoutManager = LinearLayoutManager(context)
             countryRecyclerView.adapter = CountryListAdapter(this!!.requireContext(),
                 viewModel.countries.value!!)

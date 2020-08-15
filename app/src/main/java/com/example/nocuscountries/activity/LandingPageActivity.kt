@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nocuscountries.R
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import kotlinx.android.synthetic.main.content_scrolling.*
+import kotlinx.android.synthetic.main.content_landing_page.*
 
 class LandingPageActivity : AppCompatActivity() {
 

@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nocuscountries.R
 
-class CountryInfoAdapter(val context: Context, val map: Map<String, String>)
+class CountryInfoAdapter(val context: Context)
     : RecyclerView.Adapter<CountryInfoAdapter.ViewHolder>() {
+
+    var map: Map<String, String> = emptyMap()
 
     inner class ViewHolder(item: View) : RecyclerView.ViewHolder(item){
 
@@ -31,5 +33,10 @@ class CountryInfoAdapter(val context: Context, val map: Map<String, String>)
         val value = map.values.elementAt(position)
         holder.nameText?.text = name
         holder.valueText?.text = value
+    }
+
+    fun setData(map: Map<String, String>){
+        this.map = map
+        notifyDataSetChanged()
     }
 }
