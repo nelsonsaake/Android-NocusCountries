@@ -56,7 +56,7 @@ class CountryListAdapter(private val context: Context,
 
         Picasso
             .with(context)
-            .load("https://www.countryflags.io/${country.alpha2Code}/shiny/64.png")
+            .load("https://www.countryflags.io/${country.alpha2Code}/flat/32.png")
             .into(holder.countryFlag)
     }
 

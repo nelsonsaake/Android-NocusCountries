@@ -17,15 +17,9 @@ import java.lang.reflect.Type
 class CountryInfoActivity : AppCompatActivity() {
 
     private val ALPHA_2_CODE: String = "alpha2code"
-
-    private var viewModel: MainViewModel
-    private val adapter : CountryInfoAdapter = CountryInfoAdapter(baseContext)
+    private lateinit var adapter: CountryInfoAdapter
+    private lateinit var viewModel: MainViewModel
     private var savedInstanceState: Bundle? = null
-
-    init{
-        val viewModelFactory = MainViewModelFactory(baseContext, this)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +31,17 @@ class CountryInfoActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        countryInfoRecyclerView.layoutManager = LinearLayoutManager(baseContext)
+        countryInfoRecyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = CountryInfoAdapter(this)
         countryInfoRecyclerView.adapter = adapter
     }
 
-    private fun observeCountry(){
+    private fun observeCountry() {
+
+        //
+        val viewModelFactory = MainViewModelFactory(this, this)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
         // we will take that and use it find the country we want
         viewModel.countries.observe(this, Observer { allCountries ->
             val countryInfo = allCountries.single { info -> info.alpha2Code == getAlpha2code() }
