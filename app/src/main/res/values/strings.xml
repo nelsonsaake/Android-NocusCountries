@@ -102,9 +102,8 @@
         Language
         Capital city
         Calling code
-        Region
+        Region .
         Regional Bloc
-        Response Example
     </string>
     <string name="all_countries">All</string>
     <string name="name">Name</string>

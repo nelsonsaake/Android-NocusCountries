@@ -4,10 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nocuscountries.R
-import com.example.nocuscountries.adapter.CountryInfoAdapter
 import com.example.nocuscountries.adapter.CountryListAdapter
 import com.example.nocuscountries.viewModel.CountryByNameViewModel
 import kotlinx.android.synthetic.main.activity_country_by_name.*

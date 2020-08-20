@@ -23,13 +23,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="@+id/briefDetailsText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/countryNameText"
         app:srcCompat="@drawable/ic_baseline_emoji_flags_24" />
 
     <TextView

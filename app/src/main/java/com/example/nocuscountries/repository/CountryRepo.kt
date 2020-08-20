@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.nocuscountries.LOG_TAG
 import com.example.nocuscountries.api.CountryApiService
 import com.example.nocuscountries.cache.CountryCache
 import com.example.nocuscountries.dataClass.CountryInfo
@@ -39,7 +40,7 @@ class CountryRepo(
 
             override fun onFailure(call: Call<ArrayList<CountryInfo>>, t: Throwable) {
                 Log.e(
-                    "NocusCountries",
+                    LOG_TAG,
                     "msg: ${t.localizedMessage}; \n localised msg: ${t.message}\n"
                 )
             }
@@ -49,7 +50,7 @@ class CountryRepo(
                 response: Response<ArrayList<CountryInfo>>
             ) {
                 data.value = response.body()
-                Log.i("NocusCountries", "country response from http api call\n")
+                Log.i(LOG_TAG, "country response from http api call\n")
             }
         })
 

@@ -16,7 +16,7 @@
         <activity
             android:name=".activity.CountryInfoActivity"
             android:label="@string/title_activity_country_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".activity.LandingPageActivity"
             android:label="@string/title_activity_landing_page"

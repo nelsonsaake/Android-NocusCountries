@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nocuscountries.ALPHA_CODE
 import com.example.nocuscountries.R
 import com.example.nocuscountries.activity.CountryInfoActivity
 import com.example.nocuscountries.dataClass.CountryInfo
@@ -22,7 +23,6 @@ class CountryListAdapter(private val context: Context,
     RecyclerView.Adapter<CountryListAdapter.ViewHolder>(){
 
     private val layoutInflater = LayoutInflater.from(context)
-    private val ALPHA_2_CODE: String = "alpha2code"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = layoutInflater.inflate(R.layout.country_list_item, parent, false)
@@ -56,7 +56,7 @@ class CountryListAdapter(private val context: Context,
 
         Picasso
             .with(context)
-            .load("https://www.countryflags.io/${country.alpha2Code}/flat/32.png")
+            .load("https://www.countryflags.io/${country.alpha2Code}/shiny/64.png")
             .into(holder.countryFlag)
     }
 
@@ -81,8 +81,9 @@ class CountryListAdapter(private val context: Context,
 
                 // display ui presentation of the country selected
                 val intent = Intent(context, CountryInfoActivity::class.java)
+                intent.putExtra(ALPHA_CODE, alpha2code)
                 val options = Bundle()
-                options.putString(ALPHA_2_CODE, alpha2code)
+                options.putString(ALPHA_CODE, alpha2code)
                 startActivity(context, intent, options)
             }
         }
