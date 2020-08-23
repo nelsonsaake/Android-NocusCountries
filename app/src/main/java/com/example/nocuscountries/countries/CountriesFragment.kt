@@ -1,4 +1,4 @@
-package com.example.nocuscountries.fragment
+package com.example.nocuscountries.countries
 
 import android.content.Context
 import android.os.Bundle
@@ -9,19 +9,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nocuscountries.R
-import com.example.nocuscountries.adapter.CountryListAdapter
-import com.example.nocuscountries.factory.MainViewModelFactory
-import com.example.nocuscountries.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_country_list.*
 
-class CountryListFragment : androidx.fragment.app.Fragment() {
+class CountriesFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         fun newInstance() =
-            CountryListFragment()
+            CountriesFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: CountriesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,14 +38,21 @@ class CountryListFragment : androidx.fragment.app.Fragment() {
 
     private fun getCountriesFromApi() {
 
-        val viewModelFactory = MainViewModelFactory(this.context as Context, this)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        val viewModelFactory =
+            CountriesModelFactory(
+                this.context as Context,
+                this
+            )
+        viewModel = ViewModelProvider(this, viewModelFactory).get(CountriesViewModel::class.java)
 
         // setup live data something for when we get data back from the api
         viewModel.countries.observe(viewLifecycleOwner, Observer {
             countryRecyclerView.layoutManager = LinearLayoutManager(context)
-            countryRecyclerView.adapter = CountryListAdapter(this!!.requireContext(),
-                viewModel.countries.value!!)
+            countryRecyclerView.adapter =
+                CountriesAdapter(
+                    this!!.requireContext(),
+                    viewModel.countries.value!!
+                )
         })
     }
 }

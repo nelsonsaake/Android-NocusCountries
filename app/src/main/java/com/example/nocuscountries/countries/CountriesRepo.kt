@@ -1,4 +1,4 @@
-package com.example.nocuscountries.repository
+package com.example.nocuscountries.countries
 
 import android.content.Context
 import android.util.Log
@@ -7,15 +7,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.nocuscountries.LOG_TAG
 import com.example.nocuscountries.api.CountryApiService
-import com.example.nocuscountries.cache.CountryCache
-import com.example.nocuscountries.dataClass.CountryInfo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CountryRepo(
+class CountriesRepo(
     private val countryApiService: CountryApiService,
-    private val countryCache: CountryCache,
+    private val countriesCache: CountriesCache,
     private val context: Context,
     private val lifecycleOwner: LifecycleOwner
 ) {
@@ -23,7 +21,7 @@ class CountryRepo(
     fun refreshCountryInfoData(): LiveData<ArrayList<CountryInfo>> {
 
         // check in-memory - cache
-        val cached = countryCache.getCountries()
+        val cached = countriesCache.getCountries()
         if (cached != null) return cached
 
         // check the db
@@ -32,10 +30,9 @@ class CountryRepo(
         val data = MutableLiveData<ArrayList<CountryInfo>>()
 
         // add to cache
-        countryCache.put(data)
+        countriesCache.put(data)
 
         //
-
         countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>> {
 
             override fun onFailure(call: Call<ArrayList<CountryInfo>>, t: Throwable) {

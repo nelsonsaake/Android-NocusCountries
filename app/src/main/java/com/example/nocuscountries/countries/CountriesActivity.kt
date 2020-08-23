@@ -1,11 +1,10 @@
-package com.example.nocuscountries.activity
+package com.example.nocuscountries.countries
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nocuscountries.R
-import com.example.nocuscountries.fragment.CountryListFragment
 
-class CountryListActivity : AppCompatActivity() {
+class CountriesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,12 +16,12 @@ class CountryListActivity : AppCompatActivity() {
     private fun viewAllCountries() =
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.container, CountryListFragment.newInstance())
+            .replace(R.id.container, CountriesFragment.newInstance())
             .commitNow()
 
     private fun countryPage() =
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.container, CountryListFragment.newInstance())
+            .replace(R.id.container, CountriesFragment.newInstance())
             .commitNow()
 }

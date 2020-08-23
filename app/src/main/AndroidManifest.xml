@@ -14,11 +14,11 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="false">
         <activity
-            android:name=".activity.CountryInfoActivity"
+            android:name=".countryDetails.CountryInfoActivity"
             android:label="@string/title_activity_country_info"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name=".activity.LandingPageActivity"
+            android:name=".landingPage.LandingPageActivity"
             android:label="@string/title_activity_landing_page"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CountryListActivity" />
+        <activity android:name=".countries.CountriesActivity" />
+        <activity android:name=".countrySearcher.CountryWithSearchActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

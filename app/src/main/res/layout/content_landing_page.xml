@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.LandingPageActivity"
+    tools:context=".landingPage.LandingPageActivity"
     tools:showIn="@layout/activity_landing_page">
 
     <androidx.cardview.widget.CardView
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="@string/all_countries"
+                android:text="@string/explore"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/h1Gray"
                 android:textStyle="bold" />
@@ -49,28 +49,6 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:text="@string/name"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/h1Gray"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/fullNameButton"
-                style="@style/h2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="@string/full_name"
-                android:textAlignment="viewStart"
-                android:textAppearance="@style/h1Gray"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/codeButton"
-                style="@style/h2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="@string/code"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/h1Gray"
                 android:textStyle="bold" />

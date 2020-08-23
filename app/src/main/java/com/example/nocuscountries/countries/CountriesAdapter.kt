@@ -1,4 +1,4 @@
-package com.example.nocuscountries.adapter
+package com.example.nocuscountries.countries
 
 import android.content.Context
 import android.content.Intent
@@ -12,15 +12,14 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nocuscountries.ALPHA_CODE
 import com.example.nocuscountries.R
-import com.example.nocuscountries.activity.CountryInfoActivity
-import com.example.nocuscountries.dataClass.CountryInfo
+import com.example.nocuscountries.countryDetails.CountryInfoActivity
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
-class CountryListAdapter(private val context: Context,
-                         private var countries: ArrayList<CountryInfo> = ArrayList<CountryInfo>()
+class CountriesAdapter(private val context: Context,
+                       private var countries: ArrayList<CountryInfo> = ArrayList<CountryInfo>()
 ) :
-    RecyclerView.Adapter<CountryListAdapter.ViewHolder>(){
+    RecyclerView.Adapter<CountriesAdapter.ViewHolder>(){
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -63,6 +62,12 @@ class CountryListAdapter(private val context: Context,
     fun setData(countries: ArrayList<CountryInfo>){
         this.countries = countries
         notifyDataSetChanged()
+    }
+
+    fun addNewData(countries: ArrayList<CountryInfo>){
+        val changeIndex = this.countries.size
+        this.countries.addAll(countries)
+        notifyItemRangeInserted(changeIndex, countries.size)
     }
 
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {

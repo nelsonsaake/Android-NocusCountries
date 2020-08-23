@@ -1,15 +1,12 @@
-package com.example.nocuscountries.factory
+package com.example.nocuscountries.countries
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.nocuscountries.cache.CountryCache
 import com.example.nocuscountries.api.CountryApiService
-import com.example.nocuscountries.repository.CountryRepo
-import com.example.nocuscountries.viewModel.MainViewModel
 
-class MainViewModelFactory(
+class CountriesModelFactory(
     private val context: Context,
     private val lifecycleOwner: LifecycleOwner
 ) : ViewModelProvider.Factory {
@@ -17,18 +14,18 @@ class MainViewModelFactory(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
         val countryApiService = CountryApiService.create()
-        val countryCache = CountryCache()
+        val countryCache = CountriesCache()
 
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(CountriesViewModel::class.java)) {
 
             val countryRepo =
-                CountryRepo(
+                CountriesRepo(
                     countryApiService,
                     countryCache,
                     context.applicationContext,
                     lifecycleOwner
                 )
-            return MainViewModel(
+            return CountriesViewModel(
                 countryRepo
             ) as T
         }

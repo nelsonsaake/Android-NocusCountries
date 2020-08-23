@@ -1,4 +1,4 @@
-package com.example.nocuscountries.activity
+package com.example.nocuscountries.countryDetails
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.nocuscountries.ALPHA_CODE
 import com.example.nocuscountries.R
 import com.example.nocuscountries.TAB
-import com.example.nocuscountries.dataClass.CountryInfo
-import com.example.nocuscountries.factory.MainViewModelFactory
-import com.example.nocuscountries.viewModel.MainViewModel
+import com.example.nocuscountries.countries.CountryInfo
+import com.example.nocuscountries.countries.CountriesModelFactory
+import com.example.nocuscountries.countries.CountriesViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_country_info.*
 
 class CountryInfoActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: CountriesViewModel
     private var savedInstanceState: Bundle? = null
     private lateinit var alpha2code: String
     private lateinit var country: CountryInfo
@@ -33,8 +33,12 @@ class CountryInfoActivity : AppCompatActivity() {
     private fun observeCountry() {
 
         //
-        val viewModelFactory = MainViewModelFactory(this, this)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        val viewModelFactory =
+            CountriesModelFactory(
+                this,
+                this
+            )
+        viewModel = ViewModelProvider(this, viewModelFactory).get(CountriesViewModel::class.java)
 
         // we will take that and use it find the country we want
         viewModel.countries.observe(this, Observer { allCountries ->

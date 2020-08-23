@@ -1,10 +1,9 @@
-package com.example.nocuscountries.cache
+package com.example.nocuscountries.countries
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.nocuscountries.dataClass.CountryInfo
 
-class CountryCache {
+class CountriesCache {
 
     private var countriesInfo: MutableLiveData<ArrayList<CountryInfo>>?
 
@@ -19,4 +18,6 @@ class CountryCache {
     fun put(data: MutableLiveData<java.util.ArrayList<CountryInfo>>) {
         countriesInfo = data
     }
+
+
 }
