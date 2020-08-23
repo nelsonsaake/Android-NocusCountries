@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.nocuscountries.countries.CountryInfo
 
 
-class CountryWithSearchViewModel : ViewModel() {
+class CountriesWithSearchViewModel : ViewModel() {
 
     private val repo = CountriesWithSearchRepo()
 

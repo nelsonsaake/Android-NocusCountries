@@ -53,7 +53,7 @@ class CountriesWithSearchRepo {
 
     fun search(searchString: String): LiveData<ArrayList<CountryInfo>>? {
 
-        val countryInfo: MutableLiveData<ArrayList<CountryInfo>>? = null
+        val countries = MutableLiveData<ArrayList<CountryInfo>>()
 
         // we check the cached data
 
@@ -61,8 +61,8 @@ class CountriesWithSearchRepo {
 
         // we check the internet
         countryApiService.getCountryWithAlpha2Code(searchString).enqueue(object :
-            Callback<ArrayList<CountryInfo>> {
-            override fun onFailure(call: Call<ArrayList<CountryInfo>>, t: Throwable) {
+            Callback<CountryInfo> {
+            override fun onFailure(call: Call<CountryInfo>, t: Throwable) {
                 Log.e(
                     LOG_TAG,
                     "msg: ${t.localizedMessage}; \n localised msg: ${t.message}\n"
@@ -70,14 +70,19 @@ class CountriesWithSearchRepo {
             }
 
             override fun onResponse(
-                call: Call<ArrayList<CountryInfo>>,
-                response: Response<ArrayList<CountryInfo>>
+                call: Call<CountryInfo>,
+                response: Response<CountryInfo>
             ) {
-                countryInfo?.value = response.body()
+                val tempCountries = arrayListOf(response.body() as CountryInfo)
+                countries?.value = tempCountries
+                Log.i(
+                    LOG_TAG,
+                    "response: ${response.body()}\n"
+                )
             }
 
         })
 
-        return countryInfo
+        return countries
     }
 }

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/saveSearchSettingsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveSearchSettingsButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Switch
+                        android:id="@+id/nameSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:text="@string/name_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Switch
+                        android:id="@+id/codeSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/code_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="@+id/fullNameSwitch"
+                        app:layout_constraintStart_toStartOf="@+id/fullNameSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/fullNameSwitch" />
+
+                    <Switch
+                        android:id="@+id/fullNameSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/full_name_search_option"
+                        app:layout_constraintEnd_toEndOf="@+id/nameSwitch"
+                        app:layout_constraintStart_toStartOf="@+id/nameSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/nameSwitch"
+                        android:textAppearance="@style/paragraph" />
+
+                    <Switch
+                        android:id="@+id/codeListSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/list_of_codes_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="@+id/codeSwitch"
+                        app:layout_constraintStart_toStartOf="@+id/codeSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/codeSwitch" />
+
+                    <Switch
+                        android:id="@+id/currencySswitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/currency_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="@+id/codeListSwitch"
+                        app:layout_constraintStart_toStartOf="@+id/codeListSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/codeListSwitch" />
+
+                    <Switch
+                        android:id="@+id/languageSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/language_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="@+id/currencySswitch"
+                        app:layout_constraintStart_toStartOf="@+id/currencySswitch"
+                        app:layout_constraintTop_toBottomOf="@+id/currencySswitch" />
+
+                    <Switch
+                        android:id="@+id/capitalCitySwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/capital_city_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="@+id/languageSwitch"
+                        app:layout_constraintHorizontal_bias="0.436"
+                        app:layout_constraintStart_toStartOf="@+id/languageSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/languageSwitch" />
+
+                    <Switch
+                        android:id="@+id/callingCodeSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/calling_code_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="@+id/capitalCitySwitch"
+                        app:layout_constraintStart_toStartOf="@+id/capitalCitySwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/capitalCitySwitch" />
+
+                    <Switch
+                        android:id="@+id/regionSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/region_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintEnd_toEndOf="@+id/callingCodeSwitch"
+                        app:layout_constraintStart_toStartOf="@+id/callingCodeSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/callingCodeSwitch" />
+
+                    <Switch
+                        android:id="@+id/regionBlocSwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="32dp"
+                        android:text="@string/region_bloc_search_option"
+                        android:textAppearance="@style/paragraph"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/regionSwitch"
+                        app:layout_constraintStart_toStartOf="@+id/regionSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/regionSwitch" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

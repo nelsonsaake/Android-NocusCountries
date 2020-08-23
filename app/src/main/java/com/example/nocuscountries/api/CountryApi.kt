@@ -10,13 +10,13 @@ import retrofit2.http.Path
 
 interface CountryApiService{
 
-    @GET("all")
+    @GET("all?fields=name;capital;alpha2Code")
     fun getCountriesInfo() : Call<ArrayList<CountryInfo>>
 
     @GET("alpha/{code}")
     fun getCountryWithAlpha2Code(
         @Path("code") code: String
-    ) : Call<ArrayList<CountryInfo>>
+    ) : Call<CountryInfo>
 
     companion object {
         fun create(): CountryApiService {

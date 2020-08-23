@@ -10,12 +10,14 @@ import com.example.nocuscountries.TAB
 import com.example.nocuscountries.countries.CountryInfo
 import com.example.nocuscountries.countries.CountriesModelFactory
 import com.example.nocuscountries.countries.CountriesViewModel
+import com.example.nocuscountries.countrySearcher.CountriesWithSearchRepo
+import com.example.nocuscountries.countrySearcher.CountriesWithSearchViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_country_info.*
 
 class CountryInfoActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: CountriesViewModel
+    private lateinit var viewModel: CountriesWithSearchViewModel
     private var savedInstanceState: Bundle? = null
     private lateinit var alpha2code: String
     private lateinit var country: CountryInfo
@@ -38,10 +40,10 @@ class CountryInfoActivity : AppCompatActivity() {
                 this,
                 this
             )
-        viewModel = ViewModelProvider(this, viewModelFactory).get(CountriesViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CountriesWithSearchViewModel::class.java)
 
         // we will take that and use it find the country we want
-        viewModel.countries.observe(this, Observer { allCountries ->
+        viewModel.countries?.observe(this, Observer { allCountries ->
             country = allCountries.single { info -> info.alpha2Code == alpha2code }
             setup()
         })
@@ -59,7 +61,7 @@ class CountryInfoActivity : AppCompatActivity() {
 
         nativeNameTextView.text = "The native name is ${country.nativeName}"
 
-        alphaCodeTextView.text = "The country code is ${country.alpha2Code} or ${country.alpha3Code}"
+        alphaCodeTextView.text = " And the short name is ${country.alpha2Code} or ${country.alpha3Code}"
 
         capitalTextView.text = "The capital of ${country.name} is ${country.capital}"
 
@@ -67,19 +69,25 @@ class CountryInfoActivity : AppCompatActivity() {
 
         subregionTextView.text = "Specifically ${country.subregion}"
 
-        populationTextView.text = "The population of the coutry is ${country.population}"
+        populationTextView.text = "There are ${country.population} people in ${country.name}"
 
         val currencies = country.currencies
-        var currenciesStr = "Currencies used includes:\n"
-        currencies.forEach {currency ->
-            currenciesStr += "${currency.name},$TAB${currency.symbol},$TAB${currency.code};"
+        var currenciesStr = "Currencies:\n"
+        currencies.forEachIndexed { index, currency ->
+            currenciesStr += "${currency.name}, ${currency.symbol}, ${currency.code}"
+            if(index != currencies.lastIndex){
+                currenciesStr += "${TAB}|${TAB}"
+            }
         }
         currencyTextView.text = currenciesStr
 
         val languages = country.languages
         var languagesStr = "Languages spoken:\n"
-        languages.forEach {language ->
-            languagesStr += "\n${language.name},${TAB}or${TAB}${language.nativeName};"
+        languages.forEachIndexed {index, language ->
+            languagesStr += "${language.name} or ${language.nativeName}"
+            if(index != languages.lastIndex){
+                languagesStr += "${TAB}|${TAB}"
+            }
         }
         languagesTextView.text = languagesStr
     }

@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:text="@string/explore"
-                android:textAlignment="viewStart"
+                android:textAlignment="center"
                 android:textAppearance="@style/h1Gray"
                 android:textStyle="bold" />
 
@@ -48,8 +48,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="@string/name"
-                android:textAlignment="viewStart"
+                android:text="name"
+                android:textAlignment="center"
                 android:textAppearance="@style/h1Gray"
                 android:textStyle="bold" />
 
