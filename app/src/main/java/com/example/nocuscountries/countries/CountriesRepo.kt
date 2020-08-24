@@ -33,7 +33,7 @@ class CountriesRepo(
         countriesCache.put(data)
 
         //
-        countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>> {
+        countryApiService.getAllCountries().enqueue(object : Callback<ArrayList<CountryInfo>> {
 
             override fun onFailure(call: Call<ArrayList<CountryInfo>>, t: Throwable) {
                 Log.e(

@@ -32,23 +32,12 @@
                 android:textStyle="italic" />
 
             <Button
-                android:id="@+id/allButton"
+                android:id="@+id/exploreButton"
                 style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:text="@string/explore"
-                android:textAlignment="center"
-                android:textAppearance="@style/h1Gray"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/nameButton"
-                style="@style/h2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="name"
                 android:textAlignment="center"
                 android:textAppearance="@style/h1Gray"
                 android:textStyle="bold" />

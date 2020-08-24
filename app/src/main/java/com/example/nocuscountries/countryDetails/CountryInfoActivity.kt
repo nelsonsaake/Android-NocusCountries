@@ -9,11 +9,9 @@ import com.example.nocuscountries.R
 import com.example.nocuscountries.TAB
 import com.example.nocuscountries.countries.CountryInfo
 import com.example.nocuscountries.countries.CountriesModelFactory
-import com.example.nocuscountries.countries.CountriesViewModel
-import com.example.nocuscountries.countrySearcher.CountriesWithSearchRepo
 import com.example.nocuscountries.countrySearcher.CountriesWithSearchViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_country_info.*
+import kotlinx.android.synthetic.main.activity_country_details.*
 
 class CountryInfoActivity : AppCompatActivity() {
 
@@ -24,7 +22,7 @@ class CountryInfoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_country_info)
+        setContentView(R.layout.activity_country_details)
 
         this.savedInstanceState = savedInstanceState
         alpha2code = intent.getStringExtra(ALPHA_CODE)

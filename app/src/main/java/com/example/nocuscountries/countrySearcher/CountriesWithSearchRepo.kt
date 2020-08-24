@@ -31,7 +31,7 @@ class CountriesWithSearchRepo {
 
         // get from net
         data = MutableLiveData<ArrayList<CountryInfo>>()
-        countryApiService.getCountriesInfo().enqueue(object : Callback<ArrayList<CountryInfo>?> {
+        countryApiService.getAllCountries().enqueue(object : Callback<ArrayList<CountryInfo>?> {
             override fun onFailure(call: Call<ArrayList<CountryInfo>?>, t: Throwable) {
                 Log.e(
                     LOG_TAG,
@@ -60,7 +60,7 @@ class CountriesWithSearchRepo {
         // we check database
 
         // we check the internet
-        countryApiService.getCountryWithAlpha2Code(searchString).enqueue(object :
+        countryApiService.getCountryWithAlphaCode(searchString).enqueue(object :
             Callback<CountryInfo> {
             override fun onFailure(call: Call<CountryInfo>, t: Throwable) {
                 Log.e(

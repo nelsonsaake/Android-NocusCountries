@@ -23,7 +23,7 @@ class LandingPageActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, CountriesActivity::class.java))
         }
 
-        nameButton.setOnClickListener {
+        exploreButton.setOnClickListener {
             startActivity(Intent(applicationContext, CountryWithSearchActivity::class.java))
         }
     }
