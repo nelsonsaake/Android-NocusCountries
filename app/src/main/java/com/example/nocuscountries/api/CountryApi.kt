@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface CountryApiService{
 
-    @GET("all?fields=name;capital;alpha2Code")
+    @GET("all?fields=name;population;alpha2Code")
     fun getAllCountries() : Call<ArrayList<CountryInfo>>
 
     @GET("alpha/{code}")

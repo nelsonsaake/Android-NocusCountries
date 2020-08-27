@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import androidx.fragment.app.Fragment
 import com.example.nocuscountries.*
 import kotlinx.android.synthetic.main.fragment_search_settings.*
@@ -11,6 +12,8 @@ import kotlinx.android.synthetic.main.fragment_search_settings.*
 class SearchSettingsFragment(
     private var viewModel: CountriesWithSearchViewModel
 ) : Fragment() {
+
+    private lateinit var searchOptionSwitchList: Map<Switch, Int>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,17 +25,14 @@ class SearchSettingsFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mapSwitches()
+        setupListeners()
     }
 
-    fun setFlag(flag: Int) {
+    private fun mapSwitches() {
 
-        viewModel.searchOptions = viewModel.searchOptions or flag
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        val searchOptionSwitchList = mapOf(
+        searchOptionSwitchList = mapOf(
             nameSwitch to NAME_SEARCH_OPTION,
             codeSwitch to CODE_SEARCH_OPTION,
             fullNameSwitch to FULL_NAME_SEARCH_OPTION,
@@ -44,9 +44,34 @@ class SearchSettingsFragment(
             regionSwitch to REGION_SEARCH_OPTION,
             regionBlocSwitch to REGION_BLOC_SEARCH_OPTION
         )
+    }
+
+    fun setFlag(flag: Int) {
+
+        // if the flag is set, the corresponding options corresponding will be set
+        viewModel.searchOptions = viewModel.searchOptions or flag
+
+        // in the case where the flag was previously set and the flag is not now
+        // we have a '1' and '0'
+        // if we 'or' this and store in the options
+        // it won't clear the bit in the options flag
+        // if we 'and' after the 'or' and the flag is zero it will clear the bit
+        //
+        // if the flag is '1'
+        // and the bit in options is '0'
+        // if we or and store in options, options will have that bit to be '1'
+        // if we 'and' after and store in options, the bit will persist
+        // we = me, my computer, the code and now you :)
+        viewModel.searchOptions = viewModel.searchOptions and flag
+    }
+
+    private fun setupListeners() {
 
         searchOptionSwitchList.keys.forEach { switch ->
-            if (switch.isChecked) setFlag(searchOptionSwitchList[switch] as Int)
+
+            switch.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) setFlag(searchOptionSwitchList[switch] as Int)
+            }
         }
     }
 }
