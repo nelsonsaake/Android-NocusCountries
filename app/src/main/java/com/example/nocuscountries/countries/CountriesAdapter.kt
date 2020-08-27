@@ -59,6 +59,11 @@ class CountriesAdapter(private val context: Context,
             .into(holder.countryFlag)
     }
 
+    fun clearData(){
+        countries.clear()
+        notifyDataSetChanged()
+    }
+
     fun setData(countries: ArrayList<CountryInfo>){
         this.countries = countries
         notifyDataSetChanged()

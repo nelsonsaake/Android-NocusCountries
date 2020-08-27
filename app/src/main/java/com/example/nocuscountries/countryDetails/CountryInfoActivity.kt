@@ -9,7 +9,7 @@ import com.example.nocuscountries.R
 import com.example.nocuscountries.TAB
 import com.example.nocuscountries.countries.CountryInfo
 import com.example.nocuscountries.countries.CountriesModelFactory
-import com.example.nocuscountries.countrySearcher.CountriesWithSearchViewModel
+import com.example.nocuscountries.countriesWithSearch.CountriesWithSearchViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_country_details.*
 

@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".countries.CountriesActivity" />
-        <activity android:name=".countrySearcher.CountryWithSearchActivity" />
+        <activity android:name=".countriesWithSearch.CountryWithSearchActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

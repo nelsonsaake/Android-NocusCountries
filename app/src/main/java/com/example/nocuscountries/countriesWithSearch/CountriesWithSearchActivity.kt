@@ -1,23 +1,33 @@
-package com.example.nocuscountries.countrySearcher
+package com.example.nocuscountries.countriesWithSearch
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.nocuscountries.R
 
 class CountryWithSearchActivity : AppCompatActivity() {
 
-    private var isShowCountriesFragment = true
-    private val countriesFragment = CountriesFragment()
-    private val searchSettingsFragment = SearchSettingsFragment()
+    private var isShowCountriesFragment: Boolean = true
+    private lateinit var viewModel: CountriesWithSearchViewModel
+    private lateinit var countriesFragment: CountriesFragment
+    private lateinit var searchSettingsFragment: SearchSettingsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_country_by_name)
 
+        initVars()
         showCountriesFragment()
+    }
+
+    private fun initVars() {
+        isShowCountriesFragment = true
+        viewModel = ViewModelProvider(this).get(CountriesWithSearchViewModel::class.java)
+        countriesFragment = CountriesFragment(viewModel)
+        searchSettingsFragment = SearchSettingsFragment(viewModel)
     }
 
     private fun showCountriesFragment() =
@@ -54,8 +64,8 @@ class CountryWithSearchActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
-             R.id.search_settings_menu_item -> toggleFragment()
+        when (item.itemId) {
+            R.id.search_settings_menu_item -> toggleFragment()
         }
         return super.onOptionsItemSelected(item)
     }

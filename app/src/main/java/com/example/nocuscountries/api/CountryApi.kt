@@ -29,9 +29,9 @@ interface CountryApiService{
         @Path("name") name: String
     ) : Call<ArrayList<CountryInfo>>
 
-    @GET("alpha?codes={code}")
+    @GET("alpha?codes={codes}")
     fun getCountriesWithCodes(
-        @Query("code") code: String
+        @Query("codes") codes: String
     ) : Call<ArrayList<CountryInfo>>
 
     @GET("currency/{currency}")

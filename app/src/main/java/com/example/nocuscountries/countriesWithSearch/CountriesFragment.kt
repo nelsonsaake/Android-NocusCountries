@@ -1,4 +1,4 @@
-package com.example.nocuscountries.countrySearcher
+package com.example.nocuscountries.countriesWithSearch
 
 import android.content.Context
 import android.os.Bundle
@@ -14,10 +14,12 @@ import com.example.nocuscountries.countries.CountriesAdapter
 import com.example.nocuscountries.countries.CountryInfo
 import kotlinx.android.synthetic.main.fragment_countries.*
 
-class CountriesFragment : Fragment() {
+class CountriesFragment(
+    private var viewModel: CountriesWithSearchViewModel
+) : Fragment() {
 
-    private lateinit var viewModel: CountriesWithSearchViewModel
     private lateinit var adapter: CountriesAdapter
+    private lateinit var countries: ArrayList<CountryInfo>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,25 +32,23 @@ class CountriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewModel()
         setupAdapter()
         observeCountries()
         setupRecyclerView()
     }
 
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(this).get(CountriesWithSearchViewModel::class.java)
-    }
-
-
     private fun setupAdapter() {
         adapter = CountriesAdapter(context as Context)
     }
 
-    fun search(query: String) : Boolean {
+    fun search(query: String): Boolean {
 
-        // clear results list before beginning new search
-        adapter.setData(ArrayList<CountryInfo>())
+        adapter.clearData()
+
+        if(query.isEmpty()){
+            adapter.setData(countries)
+            return false
+        }
 
         viewModel.search(query)?.observe(this, Observer {
 
@@ -66,8 +66,9 @@ class CountriesFragment : Fragment() {
     }
 
     private fun observeCountries() {
-        viewModel.countries?.observe(viewLifecycleOwner, Observer { allCountries ->
-            adapter.setData(allCountries)
+        viewModel.countries?.observe(viewLifecycleOwner, Observer { countries ->
+            this.countries = countries
+            adapter.setData( this.countries)
         })
     }
 

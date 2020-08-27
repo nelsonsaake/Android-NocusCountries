@@ -6,27 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/saveSearchSettingsButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin"
-        android:text="@string/save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveSearchSettingsButton">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,10 +61,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:text="@string/full_name_search_option"
+                        android:textAppearance="@style/paragraph"
                         app:layout_constraintEnd_toEndOf="@+id/nameSwitch"
                         app:layout_constraintStart_toStartOf="@+id/nameSwitch"
-                        app:layout_constraintTop_toBottomOf="@+id/nameSwitch"
-                        android:textAppearance="@style/paragraph" />
+                        app:layout_constraintTop_toBottomOf="@+id/nameSwitch" />
 
                     <Switch
                         android:id="@+id/codeListSwitch"
@@ -92,7 +78,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/codeSwitch" />
 
                     <Switch
-                        android:id="@+id/currencySswitch"
+                        android:id="@+id/currencySwitch"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
@@ -109,9 +95,9 @@
                         android:layout_marginTop="32dp"
                         android:text="@string/language_search_option"
                         android:textAppearance="@style/paragraph"
-                        app:layout_constraintEnd_toEndOf="@+id/currencySswitch"
-                        app:layout_constraintStart_toStartOf="@+id/currencySswitch"
-                        app:layout_constraintTop_toBottomOf="@+id/currencySswitch" />
+                        app:layout_constraintEnd_toEndOf="@+id/currencySwitch"
+                        app:layout_constraintStart_toStartOf="@+id/currencySwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/currencySwitch" />
 
                     <Switch
                         android:id="@+id/capitalCitySwitch"
