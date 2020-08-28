@@ -16,10 +16,11 @@ import com.example.nocuscountries.countryDetails.CountryInfoActivity
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
-class CountriesAdapter(private val context: Context,
-                       private var countries: ArrayList<CountryInfo> = ArrayList<CountryInfo>()
+class CountriesAdapter(
+    private val context: Context,
+    private var countries: ArrayList<CountryInfo> = ArrayList<CountryInfo>()
 ) :
-    RecyclerView.Adapter<CountriesAdapter.ViewHolder>(){
+    RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -33,13 +34,14 @@ class CountriesAdapter(private val context: Context,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val countryInfo = countries[position]
         holder.countryNameText?.text = countryInfo.name
-        holder.briefDetailsText?.text = "${countryInfo.alpha2Code}\t|\tPopulation: ${countryInfo.population}"
+        holder.briefDetailsText?.text =
+            "${countryInfo.alpha2Code}\t|\tPopulation: ${countryInfo.population}"
         holder.name = countryInfo.name
         holder.alpha2code = countryInfo.alpha2Code
         setCountryFlag(holder, countryInfo)
     }
 
-    fun setCountryFlag(holder: ViewHolder, country: CountryInfo){
+    fun setCountryFlag(holder: ViewHolder, country: CountryInfo) {
 
         /*
          * examples:
@@ -59,20 +61,27 @@ class CountriesAdapter(private val context: Context,
             .into(holder.countryFlag)
     }
 
-    fun clearData(){
+    fun clearData() {
         countries.clear()
         notifyDataSetChanged()
     }
 
-    fun setData(countries: ArrayList<CountryInfo>){
+    fun setData(countries: ArrayList<CountryInfo>) {
         this.countries = countries
         notifyDataSetChanged()
     }
 
-    fun addNewData(countries: ArrayList<CountryInfo>){
+    fun addNewData(argCountries: ArrayList<CountryInfo>) {
         val changeIndex = this.countries.size
-        this.countries.addAll(countries)
-        notifyItemRangeInserted(changeIndex, countries.size)
+
+        // add all countries
+        // without duplicates
+       argCountries.forEach { country ->
+
+            val isAlreadyExists = this.countries?.contains(country)
+            if (!isAlreadyExists) this.countries?.add(country)
+        }
+        notifyItemRangeInserted(changeIndex, this.countries.size)
     }
 
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
