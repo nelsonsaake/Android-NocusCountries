@@ -41,6 +41,8 @@ class CountriesWithSearchRepo {
 
     private fun onArrayResponse(response: Response<ArrayList<CountryInfo>>) {
 
+        if(response?.body() == null) return
+
         setSearchResult(response.body()!!)
     }
 
@@ -193,7 +195,7 @@ class CountriesWithSearchRepo {
 
     fun getCountryWithAlpha2Code(code: String): LiveData<CountryInfo> {
 
-        val data = MutableLiveData<CountryInfo>()
+        val res = MutableLiveData<CountryInfo>()
 
         countryApiService
             .getCountryWithAlphaCode(code)
@@ -202,10 +204,10 @@ class CountriesWithSearchRepo {
                 override fun onFailure(call: Call<CountryInfo>, t: Throwable) = onFailure(t)
                 override fun onResponse(call: Call<CountryInfo>, response: Response<CountryInfo>) {
 
-                    data.value = response.body()
+                    res.value = response.body()
                 }
             })
 
-        return data
+        return res
     }
 }
