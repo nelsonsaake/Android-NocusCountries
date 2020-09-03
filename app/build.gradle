@@ -92,4 +92,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
 
+    // spinkit animation
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 }

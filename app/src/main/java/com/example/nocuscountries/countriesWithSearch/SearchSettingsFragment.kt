@@ -27,6 +27,7 @@ class SearchSettingsFragment(
         super.onViewCreated(view, savedInstanceState)
 
         mapSwitches()
+        defaultSwitches()
         setupListeners()
     }
 
@@ -44,6 +45,16 @@ class SearchSettingsFragment(
             regionSwitch to REGION_SEARCH_OPTION,
             regionBlocSwitch to REGION_BLOC_SEARCH_OPTION
         )
+    }
+
+
+    private fun defaultSwitches() {
+
+        searchOptionSwitchList.keys.forEach { switch ->
+
+            val flag = searchOptionSwitchList[switch] as Int
+            switch.isChecked =  (viewModel.searchOptions and flag) == flag
+        }
     }
 
     fun setFlag(flag: Int) {

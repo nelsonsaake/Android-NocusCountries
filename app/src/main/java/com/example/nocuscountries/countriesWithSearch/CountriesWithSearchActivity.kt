@@ -1,12 +1,15 @@
 package com.example.nocuscountries.countriesWithSearch
 
+import android.animation.Animator
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.nocuscountries.R
+import kotlinx.android.synthetic.main.fragment_countries.*
 
 class CountryWithSearchActivity : AppCompatActivity() {
 
@@ -57,8 +60,15 @@ class CountryWithSearchActivity : AppCompatActivity() {
                 return countriesFragment.search(searchView.query.toString())
             }
 
-            override fun onQueryTextChange(newText: String?) = false
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                if(newText.isNullOrEmpty()){
+                    return countriesFragment.resetRecyclerViewData()
+                }
+                return false
+            }
         })
+
         return true
     }
 
@@ -77,4 +87,5 @@ class CountryWithSearchActivity : AppCompatActivity() {
         if (isShowCountriesFragment) showCountriesFragment()
         else showSettingsFragment()
     }
+
 }

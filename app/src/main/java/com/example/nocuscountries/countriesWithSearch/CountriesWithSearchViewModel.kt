@@ -7,10 +7,10 @@ import com.example.nocuscountries.countries.CountryInfo
 class CountriesWithSearchViewModel : ViewModel() {
 
     var searchOptions: Int
-        get(){
+        get() {
             return repo.searchOptions
         }
-        set(value){
+        set(value) {
             repo.searchOptions = value
         }
 
@@ -19,5 +19,11 @@ class CountriesWithSearchViewModel : ViewModel() {
     var countries: LiveData<ArrayList<CountryInfo>>? = repo.getAllCountries()
 
     fun search(searchString: String): LiveData<ArrayList<CountryInfo>>? = repo.search(searchString)
+
+    fun getCountryWithAlpha2Code(code: String): LiveData<CountryInfo> {
+
+       return repo.getCountryWithAlpha2Code(code)
+    }
 }
+
 

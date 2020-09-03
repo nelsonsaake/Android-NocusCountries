@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nocuscountries.ALPHA_CODE
 import com.example.nocuscountries.R
-import com.example.nocuscountries.countryDetails.CountryInfoActivity
+import com.example.nocuscountries.countryDetails.CountryDetails
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
@@ -99,7 +99,7 @@ class CountriesAdapter(
                 Snackbar.make(it, name, Snackbar.LENGTH_LONG).show()
 
                 // display ui presentation of the country selected
-                val intent = Intent(context, CountryInfoActivity::class.java)
+                val intent = Intent(context, CountryDetails::class.java)
                 intent.putExtra(ALPHA_CODE, alpha2code)
                 val options = Bundle()
                 options.putString(ALPHA_CODE, alpha2code)

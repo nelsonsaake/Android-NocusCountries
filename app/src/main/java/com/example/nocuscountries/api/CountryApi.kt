@@ -14,7 +14,7 @@ interface CountryApiService{
     @GET("all?fields=name;population;alpha2Code")
     fun getAllCountries() : Call<ArrayList<CountryInfo>>
 
-    @GET("alpha/{code}")
+    @GET("alphaIn/{code}")
     fun getCountryWithAlphaCode(
         @Path("code") code: String
     ) : Call<CountryInfo>
@@ -29,7 +29,7 @@ interface CountryApiService{
         @Path("name") name: String
     ) : Call<ArrayList<CountryInfo>>
 
-    @GET("alpha?codes={codes}")
+    @GET("alphaIn")
     fun getCountriesWithCodes(
         @Query("codes") codes: String
     ) : Call<ArrayList<CountryInfo>>

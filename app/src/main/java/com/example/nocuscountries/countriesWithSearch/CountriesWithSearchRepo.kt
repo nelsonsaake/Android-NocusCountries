@@ -13,7 +13,7 @@ import retrofit2.Response
 
 class CountriesWithSearchRepo {
 
-    var searchOptions: Int = 0
+    var searchOptions: Int = ALL_SEARCH_OPTION
     var data = MutableLiveData<ArrayList<CountryInfo>>()
     private val countryApiService = CountryApiService.create()
     private val searchResult = MutableLiveData<ArrayList<CountryInfo>>()
@@ -25,7 +25,7 @@ class CountriesWithSearchRepo {
         )
     }
 
-    private fun setSearchResult(countries : ArrayList<CountryInfo>){
+    private fun setSearchResult(countries: ArrayList<CountryInfo>) {
 
         searchResult.value = countries
         Log.i(
@@ -76,7 +76,7 @@ class CountriesWithSearchRepo {
             onResponse(response)
     }
 
-    fun getAllCountries() : MutableLiveData<ArrayList<CountryInfo>> {
+    fun getAllCountries(): MutableLiveData<ArrayList<CountryInfo>> {
 
         countryApiService
             .getAllCountries()
@@ -189,5 +189,23 @@ class CountriesWithSearchRepo {
         }
 
         return searchResult
+    }
+
+    fun getCountryWithAlpha2Code(code: String): LiveData<CountryInfo> {
+
+        val data = MutableLiveData<CountryInfo>()
+
+        countryApiService
+            .getCountryWithAlphaCode(code)
+            .enqueue(object : Callback<CountryInfo> {
+
+                override fun onFailure(call: Call<CountryInfo>, t: Throwable) = onFailure(t)
+                override fun onResponse(call: Call<CountryInfo>, response: Response<CountryInfo>) {
+
+                    data.value = response.body()
+                }
+            })
+
+        return data
     }
 }
