@@ -36,6 +36,8 @@ class CountriesWithSearchRepo {
 
     fun onResponse(response: Response<CountryInfo>) {
 
+        if(response?.body() == null) return
+
         setSearchResult(arrayListOf(response.body() as CountryInfo))
     }
 

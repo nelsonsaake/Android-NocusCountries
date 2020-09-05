@@ -56,9 +56,9 @@ class CountryDetails : AppCompatActivity() {
 
     private fun makeValueTypeSpan(value: String): String {
 
-        val style = "color: #555555; font-size: 2rem;"
+        val style = "\"color: #555555; font-size: 2rem;\""
         val span = makeHtml(value, style)
-        return "$span<br/>"
+        return "$span<br/><br/>"
     }
 
     private fun concat(left: String, right: String): String {
@@ -66,9 +66,15 @@ class CountryDetails : AppCompatActivity() {
         return left + right
     }
 
+    private fun arrayListStyle(): String{
+
+        return "\"padding: 5px; background-color: #9090AA;\""
+    }
+
     private fun currenciesToHtml(currencies: List<Currencies>): String {
 
-        var nameHtml = makeNameTypeSpan("Currencies:\n")
+        var nameHtml = makeNameTypeSpan("Currencies:")
+        nameHtml = "$nameHtml<br/>"
 
         var valStr = ""
         currencies.forEachIndexed { index, currency ->
@@ -79,15 +85,15 @@ class CountryDetails : AppCompatActivity() {
         }
 
         var valueHtml = makeValueTypeSpan(valStr)
-        val style = "background-color: "
-        valueHtml = makeHtml(valueHtml, style)
+        valueHtml = makeHtml(valueHtml, arrayListStyle())
 
         return concat(nameHtml, valueHtml)
     }
 
     private fun languagesToHtml(languages: List<Languages>): String {
 
-        var nameHtml = makeNameTypeSpan("Languages spoken:\n")
+        var nameHtml = makeNameTypeSpan("Languages spoken:")
+        nameHtml = "$nameHtml<br/>"
 
         var valStr = ""
         languages.forEachIndexed { index, language ->
@@ -98,8 +104,7 @@ class CountryDetails : AppCompatActivity() {
         }
 
         var valueHtml = makeValueTypeSpan(valStr)
-        val style = "background-color: "
-        valueHtml = makeHtml(valueHtml, style)
+        valueHtml = makeHtml(valueHtml, arrayListStyle())
 
         return concat(nameHtml, valueHtml)
     }
